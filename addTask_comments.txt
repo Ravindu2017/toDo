@@ -1,0 +1,204 @@
+//let task_desc = document.createElement("div")
+
+//task.append()
+
+    /*
+
+    let input = document.createElement("INPUT")
+    input.setAttribute("id", "task_value")
+    let add_task = document.createElement("button")
+    add_task.innerHTML = "Add Task"
+    document.getElementById("task").append(add_task)
+    document.getElementById("task").append(input)
+
+    localStorage.setItem("first", "beer")//task_1.about.title)
+    joj.innerHTML = localStorage.getItem("first")
+    let task_desc = document.createElement("div")
+    task_desc.innerHTML = "test"
+    task_desc.classList.add("blk")
+    let task_in = document.createElement("input")
+
+    //ssss not useful sssss document.getElementById("task").appendChild(input)//task_in)
+    //sssss  not useful  sssss  document.getElementById("task").appendChild(add_task)
+    //document.getElementById("task").appendChild(joj)
+    */
+
+        //document.getElementById("demo").innerHTML = "Hello World";
+        //let chores = document.createElement("p")
+//document.getElementById("task").appendChild(chores)
+        //document.getElementById("project_body").appendChild(projects[projects.length - 1])
+
+    //projects.push(input.value)
+
+    //document.getElementById("projects").append(projects[-1])
+
+
+===================================================================================
+index.js
+===================================================================================
+
+
+import './style.css';
+import { taskInfo } from "./task"
+import { info } from "./info"
+import { storageAvailable } from "./local"
+import { addProject } from "./addpro"
+import { addTasks } from "./addtasks"
+
+console.log("hello")
+const task_1 = taskInfo("homework", "I have to finish 3000 word essay", "Tomorrow", 4)
+console.log(task_1.about.title, " hese ", task_1)
+task_1.sayIt()
+let joj = document.createElement("p")
+let projects = []
+
+//addProject()
+/*
+function addProject() {
+    let input = document.createElement("INPUT")
+    input.setAttribute("id", "project_value")
+    let add_project = document.createElement("button")
+    add_project.innerHTML = "Add Project"
+    document.getElementById("projects").append(add_project)
+    document.getElementById("projects").append(input)
+
+    add_project.addEventListener("click", function () {
+        //document.getElementById("demo").innerHTML = "Hello World";
+        projects.push(input.value)
+        input.value = ""
+        console.log(input.value)
+        let topic = document.createElement("p")
+        console.log(topic.value)
+        topic.setAttribute("id", projects[projects.length - 1])
+        topic.innerHTML = projects[projects.length - 1]
+        document.getElementById("project_body").appendChild(topic)
+        //document.getElementById("project_body").appendChild(projects[projects.length - 1])
+    });
+    //projects.push(input.value)
+    console.log(input.value)
+    //document.getElementById("projects").append(projects[-1])
+}*/
+
+//add button
+//onclick new task object
+
+if (storageAvailable('localStorage')) {
+    // Yippee! We can use localStorage awesomeness
+    /*localStorage.setItem("first", task_1.about.title)
+    joj.innerHTML = localStorage.getItem("first")
+    let task_desc = document.createElement("div")
+    task_desc.innerHTML = "test"
+    task_desc.classList.add("blk")
+    let task_in = document.createElement("input")
+    let add_task = document.createElement("button")
+    add_task.innerHTML = "Add Task"
+    document.getElementById("task").appendChild(task_in)
+    document.getElementById("task").appendChild(add_task)
+    document.getElementById("task").appendChild(joj)
+
+*/
+    let todo = document.getElementById("duty")
+    todo.addEventListener("click", addTasks())
+}
+else {
+    // Too bad, no localStorage for us
+}
+
+
+
+======================================================================================
+addpro.js
+======================================================================================
+
+
+let projects = []
+
+const addProject = () => {
+    let input = document.createElement("INPUT")
+    input.setAttribute("id", "project_value")
+    let add_project = document.createElement("button")
+    add_project.innerHTML = "Add Project"
+    document.getElementById("projects").append(add_project)
+    document.getElementById("projects").append(input)
+
+    add_project.addEventListener("click", function () {
+        //document.getElementById("demo").innerHTML = "Hello World";
+        projects.push(input.value)
+        input.value = ""
+        console.log(input.value)
+        let topic = document.createElement("p")
+        console.log(topic.value)
+        topic.setAttribute("id", projects[projects.length - 1])
+        topic.innerHTML = projects[projects.length - 1]
+        document.getElementById("project_body").appendChild(topic)
+        //document.getElementById("project_body").appendChild(projects[projects.length - 1])
+    });
+    //projects.push(input.value)
+    console.log(input.value)
+    //document.getElementById("projects").append(projects[-1])
+}
+
+export { addProject }
+
+
+import { make } from "./make"
+import { family } from "./family"
+
+let projects = []
+
+const addProject = () => {
+    let input = make("input", "project_value")
+    //let input = document.createElement("INPUT")
+    //input.setAttribute("id", "project_value")
+    let add_project = make("button", "add_project")
+    //let add_project = document.createElement("button")
+    add_project.innerHTML = "Add Project"
+    let project_div = family("projects")
+    project_div.append(add_project)
+    project_div.append(input)
+    //document.getElementById("projects").append(add_project)
+    //document.getElementById("projects").append(input)
+
+    add_project.addEventListener("click", function () {
+        //document.getElementById("demo").innerHTML = "Hello World";
+        projects.push(input.value)
+        input.value = ""
+        console.log(input.value)
+        //let topic = document.createElement("p")
+        let topic = make("p", String(projects[projects.length - 1]))
+        console.log(topic.value)
+        //topic.setAttribute("id", projects[projects.length - 1])
+        topic.innerHTML = projects[projects.length - 1]
+        //document.getElementById("project_body").appendChild(topic)
+        family("project_body").appendChild(topic)
+        //document.getElementById("project_body").appendChild(projects[projects.length - 1])
+    });
+    //projects.push(input.value)
+    console.log(input.value)
+    //document.getElementById("projects").append(projects[-1])
+}
+
+export { addProject }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let projectlist = document.getElementById("projects")
+projectlist.addEventListener("click", addProject())

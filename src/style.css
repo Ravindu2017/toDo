@@ -1,0 +1,60 @@
+#todo {
+    border: dashed salmon;
+    display: grid;
+    grid-template-columns: 30% 65%;
+    grid-template-rows: 500px 500px;
+    grid-column-gap: 5%;
+    grid-row-gap: 50px;
+    grid-template-areas: 
+    "navbar tasks"
+    "navbar tasks";
+}
+
+#navbar {
+    border:dashed seagreen;
+    display: grid;
+    grid-area: navbar;
+    grid-template-rows: 30% 35% 35%;
+    grid-template-areas: 
+    "heading"
+    "info"
+    "info";
+}
+
+#tasks {
+    border: dashed purple;
+    grid-area: tasks;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: 
+    "heading"
+    "stuff";
+}
+
+.heading {
+    grid-area: heading;
+    border: dashed gray;
+}
+
+.info {
+    grid-area: info;
+    border: dashed blue;
+}
+
+.stuff {
+    grid-area: stuff;
+    border: dashed yellow;
+}
+
+.topic {
+    border: dashed black;
+}
+
+.task {
+    border: dashed red;
+}
+
+.task {
+    grid-area: blk;
+    border: dashed black;
+}

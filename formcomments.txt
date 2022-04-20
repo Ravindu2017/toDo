@@ -1,0 +1,138 @@
+===============================================================
+form.js
+================================================================
+import { family } from "./family"
+import { make } from "./make"
+
+
+//for now just make a form and append it to div with id="task" 
+//title, data, date, level, category
+const taskForm = () => {
+    let body = family("task")
+    let task = make("form", "form_trial")
+    task.innerHTML = "Task Form"
+    let input = make("input", "input_trial")
+    let desc = make("textarea", "txtbox")
+    let space = make("p")
+    let space2 = make("p")
+
+
+    /*task.append(input)
+    task.append(desc)
+    //task.append(button)
+    body.append(task)*/
+    body.append(input)
+    body.append(space)
+    body.append(desc)
+    body.append(space2)
+
+
+    console.log("hey")
+    console.log(input.value, desc.value)
+
+    //return [input.value, desc.value]//, button]
+
+}
+
+export { taskForm }
+
+
+========================================================================================
+addtasks.js
+========================================================================================
+import { taskInfo } from "./task"
+import { make } from "./make"
+import { family } from "./family"
+import { taskForm } from "./form"
+
+let tasks = []
+let details = []
+
+let joj = document.createElement("p")
+
+
+const addTasks = () => {
+    let form = taskForm()
+
+    //let input = make("input", "task_value")
+    let add_task = make("button", "add_task")
+    add_task.innerHTML = "Add a Task"
+    family("task").appendChild(add_task)
+    console.log(add_task, form)
+    //let task = family("task")
+    //task.append(add_task)
+    //task.append(input)
+
+    localStorage.setItem("first", "beer")  //task_1.about.title
+    joj.innerHTML = localStorage.getItem("first")
+
+    /*let task_desc = make("div", "task_desc")
+    task_desc.innerHTML = "test"
+    task_desc.classList.add("blk")
+    console.log(" now ", add_task, " now ", task_desc)*/
+
+
+    add_task.addEventListener("click", function () {
+        //form[2].addEventListener("click", function () {
+        //let y = taskForm()
+        //y[0] += String(tasks[tasks.length - 1])
+        //console.log(y[0])
+        //////////
+
+        if ((String(family("txtbox").value).length > 0) && (String(family("input_trial").value).length > 0)) {
+            tasks.push(family("input_trial").value)
+            details.push(family("txtbox").value)
+            console.log(String(family("txtbox").value).length)
+            console.log(tasks)
+            let chores = make("p", String(tasks[tasks.length - 1]))
+            console.log(chores.value, tasks)
+            chores.innerHTML = tasks[tasks.length - 1]
+            family("task").appendChild(chores)
+            //family("task").append("\n")
+            //family("task").append(String(family("input_trial").value))
+            family("task").append(String(family("txtbox").value))
+            //family(String(tasks[tasks.length - 1])).append(String(family("txtbox").value))
+            family("input_trial").value = ""
+            family("txtbox").value = ""
+        }
+
+        else {
+            alert("Please fill in the fields")
+        }
+        /*tasks.push(input.value)
+        input.value = ""
+        console.log(input.value)
+        let chores = make("p", String(tasks[tasks.length - 1]))
+        console.log(chores.value, tasks)
+        chores.innerHTML = tasks[tasks.length - 1]
+        family("task").appendChild(chores)*/
+
+    });
+    //console.log(input.value)
+}
+
+export { addTasks }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
